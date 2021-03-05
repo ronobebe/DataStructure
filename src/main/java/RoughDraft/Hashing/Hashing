@@ -1,0 +1,12 @@
+So HashMap is in various form but the core responsibility of hasMap is simple Unique Key and values.
+HashMap, HashTable, HashSet
+LinkedHashMap, LinkedHashSet
+ConcurrentHashMap
+
+HashSet are internally call HashMaps Only so we just need to know HashMaps.
+HashTable is simply a HashMap but its Synchronised and it does not allow null values in Both Key and values.
+
+Separate Chaining Technique, Please note there are other open addressing techniques like double hashing and linear probing
+whose efficiency is almost same as to that of separate chaining
+
+Linear Probing(Primary clustering, Secondary Clustering), Double hashing, Quadratic probing.
