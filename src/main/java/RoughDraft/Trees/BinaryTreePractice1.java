@@ -154,7 +154,7 @@ while (tempNode!=null){
 
   public static void main(String[] args) {
     //
-    int[] array = {
+    /*int[] array = {
       20,8, 22, 4,12, 10, 14
     };
 
@@ -162,7 +162,9 @@ while (tempNode!=null){
     for (int i : array) binaryTreePractice1.addValue(i);
     System.out.println("Value found is " + binaryTreePractice1.searchNode(18));
     binaryTreePractice1.addValue(2);
-    binaryTreePractice1.inOrderSuccessor(8);
+    binaryTreePractice1.inOrderSuccessor(8);*/
+
+
 
   }
 }
