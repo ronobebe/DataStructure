@@ -21,7 +21,7 @@ public class HashMapLinearProbing_PrimaryClustering<K, V> {
     return this.arrData.length;
   }
 
-  public final int hash(K key) {
+  public  int hash(K key) {
     Integer i = (Integer) key;
     return i % 4;
   }
@@ -131,8 +131,8 @@ public class HashMapLinearProbing_PrimaryClustering<K, V> {
 
 
   public final static class Node<K, V> {
-    K key;
-    V value;
+    private K key;
+    private V value;
 
     public Node(K key, V value) {
       this.key = key;
@@ -163,6 +163,9 @@ public class HashMapLinearProbing_PrimaryClustering<K, V> {
     hashMapLinearProbing_primaryClustering.add(23,"Success");
     hashMapLinearProbing_primaryClustering.setData(23,"Success123");
     System.out.println("Search value is : "+ hashMapLinearProbing_primaryClustering.search(23));
+    System.out.println("Size is : "+ hashMapLinearProbing_primaryClustering.getSize());
+    System.out.println("Capacity is : "+ hashMapLinearProbing_primaryClustering.capacity());
+
 
     hashMapLinearProbing_primaryClustering.printAllElements();
 

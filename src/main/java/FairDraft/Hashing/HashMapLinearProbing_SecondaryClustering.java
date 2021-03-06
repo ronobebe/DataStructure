@@ -44,7 +44,7 @@ public class HashMapLinearProbing_SecondaryClustering<K, V> extends  HashMapLine
         int dummy = super.hash(key);
         int increment=1;
         while (dummy<super.arrData.length ){
-            if ( super.arrData[dummy] == null || (Integer)super.arrData[dummy].key==super.Default_Deleted_Number)
+            if ( super.arrData[dummy] == null || (Integer)super.arrData[dummy].getKey()==super.Default_Deleted_Number)
                 return dummy;
             else
                 dummy+=(increment++)<<1;
@@ -61,7 +61,7 @@ public class HashMapLinearProbing_SecondaryClustering<K, V> extends  HashMapLine
             if(this.arrData[dummy]==null)
                 return null;
 
-            if(this.arrData[dummy].key==key)
+            if(this.arrData[dummy].getKey()==key)
                 return this.arrData[dummy];
             else
                 dummy+=(increment++)<<1;
@@ -85,6 +85,8 @@ public class HashMapLinearProbing_SecondaryClustering<K, V> extends  HashMapLine
       hashMapLinearProbing_secondaryClustering.add(23,"Success");
       hashMapLinearProbing_secondaryClustering.setData(23,"Success123");
       System.out.println("Search value is : "+ hashMapLinearProbing_secondaryClustering.search(23));
+      System.out.println("Size is : "+ hashMapLinearProbing_secondaryClustering.getSize());
+      System.out.println("Capacity is : "+ hashMapLinearProbing_secondaryClustering.capacity());
 
       hashMapLinearProbing_secondaryClustering.printAllElements();
     //

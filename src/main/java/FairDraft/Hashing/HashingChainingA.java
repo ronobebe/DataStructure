@@ -71,8 +71,8 @@ public class HashingChainingA<K, V> {
     if (hashLinkedList.getChainCount() != 0) {
       --this.size;
       return (V) hashLinkedList.remove(key);
-      }
-      return null;
+    }
+    return null;
   }
 
   public void printAllElements() {
@@ -113,36 +113,30 @@ public class HashingChainingA<K, V> {
 
     public V remove(K key) {
       Node node = this.headNode;
-      Node prev=this.headNode;
+      Node prev = this.headNode;
       for (int i = 0; i < this.getChainCount(); i++) {
 
-        if(i==0 && node.key==key)
-        {
+        if (i == 0 && node.key == key) {
           removeFirst();
-        }
-        else if(node.key==key){
-          prev.next=node.next;
+        } else if (node.key == key) {
+          prev.next = node.next;
           --this.chainCount;
-          return (V)node.value;
+          return (V) node.value;
         }
 
-        prev=node;
-        node=node.next;
-
-
+        prev = node;
+        node = node.next;
       }
       return null;
     }
 
-    public V removeFirst()
-    {
-      V removeData=(V)this.headNode.value;
-      Node next=this.headNode.next;
-      this.headNode=next;
+    public V removeFirst() {
+      V removeData = (V) this.headNode.value;
+      Node next = this.headNode.next;
+      this.headNode = next;
       --this.chainCount;
-      return  removeData;
+      return removeData;
     }
-
 
     @Override
     public String toString() {
@@ -183,7 +177,7 @@ public class HashingChainingA<K, V> {
     hashingChainingA.add(8, "Namasthe");
     hashingChainingA.remove(8);
     hashingChainingA.remove(11);
-   // hashingChainingA.remove(2);
+    // hashingChainingA.remove(2);
 
     hashingChainingA.printAllElements();
 
@@ -191,5 +185,4 @@ public class HashingChainingA<K, V> {
     System.out.println("Array capacity is : " + hashingChainingA.arrayCapacity());
     System.out.println("Array element is : " + hashingChainingA.get(2));
   }
-
 }
