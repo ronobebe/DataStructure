@@ -110,7 +110,7 @@ public class HashMapLinearProbing_PrimaryClustering<K, V> {
     if (siz > arrData.length) growArray(siz);
   }
 
-  private void growArray(int newSize) {
+  public void growArray(int newSize) {
 
     int arraySize = this.arrData.length;
     int calculatedSize = arraySize << 1;
