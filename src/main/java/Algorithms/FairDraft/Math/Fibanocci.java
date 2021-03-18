@@ -1,0 +1,60 @@
+package Algorithms.FairDraft.Math;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Fibanocci {
+
+    public static void main(String[] args) {
+        //
+        Scanner sc=new Scanner(System.in);
+        int num;
+
+        while (true){
+            try{
+                System.out.println(
+                        "Please enter the number");
+
+                num = sc.nextInt();
+
+                if (num<0) {
+                    System.out.println("Invalid Number!");
+                    continue;
+                }
+                break;
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Invalid input.");
+                sc.next();
+            }
+        }
+
+        System.out.println("Factorial number is : "+isFibonacciNumber(num));
+
+
+    }
+
+
+    /**
+     * Check if a number is perfect square number
+     *
+     * @param number the number to be checked
+     * @return <tt>true</tt> if {@code number} is perfect square, otherwise <tt>false</tt>
+     */
+    public static boolean isPerfectSquare(int number) {
+        int sqrt = (int) Math.sqrt(number);
+        return sqrt * sqrt == number;
+    }
+
+    /**
+     * Check if a number is fibonacci number This is true if and only if at least one of 5x^2+4 or
+     * 5x^2-4 is a perfect square
+     *
+     * @param number the number
+     * @return <tt>true</tt> if {@code number} is fibonacci number, otherwise <tt>false</tt>
+     * @link https://en.wikipedia.org/wiki/Fibonacci_number#Identification
+     */
+    public static boolean isFibonacciNumber(int number) {
+        return isPerfectSquare(5 * number * number + 4) || isPerfectSquare(5 * number * number - 4);
+    }
+}
