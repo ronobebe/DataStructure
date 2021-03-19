@@ -2,7 +2,6 @@ package Algorithms.RoughDraft.Trees;
 
 import java.util.Scanner;
 
-/** @author jack870131 */
 public class RedBlackBST {
 
     private final int R = 0;
@@ -211,13 +210,14 @@ public class RedBlackBST {
             x = z.left;
             transplant(z, z.left);
         } else {
+            // take successor of a node
             y = treeMinimum(z.right);
-            yorigcolor = y.color;
-            x = y.right;
-            if (y.p == z) x.p = y;
+            yorigcolor = y.color;// successor color
+            x = y.right; // successor right
+            if (y.p == z) x.p = y;// if successor parent is node we found
             else {
-                transplant(y, y.right);
-                y.right = z.right;
+                transplant(y, y.right); // interchange successor and successor right
+                y.right = z.right; //
                 y.right.p = y;
             }
             transplant(z, y);
@@ -328,4 +328,11 @@ public class RedBlackBST {
         printTreepre(root);
         scan.close();
     }
+
+  public static void main(String[] args) {
+    //
+      RedBlackBST redBlackBST=new RedBlackBST();
+      redBlackBST.insertDemo();
+     // redBlackBST.deleteDemo();
+  }
 }

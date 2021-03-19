@@ -2,6 +2,8 @@ package Algorithms.FairDraft.Trees;
 
 
 
+import Algorithms.RoughDraft.Trees.RedBlackBST;
+
 import java.util.TreeMap;
 
 public class RedBlackTree {
@@ -160,6 +162,154 @@ public class RedBlackTree {
     root.color = true;
   }
 
+  void replaceNOdesForDelete(Node target, Node successors) {
+   if(target.parent==nil)
+     this.root=successors;
+   else if(target==target.parent.left)
+   {
+     target.parent.left=successors;
+   }
+   else
+   {
+     target.parent.right=successors;
+   }
+  }
+    private  Node successor(Node node)
+    {
+      Node x=node.right;
+      while (node.left!=null)
+      {
+        node=node.left;
+      }
+      return x;
+    }
+
+    public  Node findNode(int data)
+    {
+      Node head=this.root;
+
+
+      while (head!=null)
+      {
+        if(head.data>data)
+          head=head.left;
+
+        else if(head.data<data)
+          head=head.right;
+
+        else
+          break;
+
+      }
+      return  head;
+    }
+    /*
+    * (Z)
+    *    \
+    *    (Y)
+    *       \
+    *        (X)
+    *
+    * */
+
+    public  boolean delete(int data)
+    {
+      Node z=findNode(data);
+      Node x,y;
+      y=z;
+      boolean successorColor=y.color;
+      if(z==null)
+        return false;
+      // consider NOde having only one child
+      if(z.left==null)
+      {
+        x=z.right;
+        replaceNOdesForDelete(z,z.right);
+      }
+      else if (z.right == nil) {
+        x = z.left;
+        replaceNOdesForDelete(z, z.left);
+      }
+      else
+      {
+        // find successor of node y
+        y=successor(z);
+        successorColor=y.color;
+        x = y.right; // successor right
+        if (y.parent == z) x.parent = y;// if successor parent is node we found
+        else {
+          replaceNOdesForDelete(y, y.right); // interchange successor and successor right
+          y.right = z.right; //
+          y.right.parent = y;
+        }
+        replaceNOdesForDelete(z, y);
+        y.left = z.left;
+        y.left.parent = y;
+        y.color = z.color;
+      }
+      if (successorColor) deleteFixup(x);
+      return true;
+    }
+
+
+  void deleteFixup(Node x) {
+    while (x != root && x.color ) {
+      if (x == x.parent.left) {
+        Node w = x.parent.right;
+        if (!w.color) {
+          w.color = true;
+          x.parent.color = false;
+          rotateLeft(x.parent);
+          w = x.parent.right;
+        }
+        if (w.left.color && w.right.color ) {
+          w.color = false;
+          x = x.parent;
+          continue;
+        } else if (w.right.color) {
+          w.left.color = true;
+          w.color = false;
+          rotateRight(w);
+          w = x.parent.right;
+        }
+        if (!w.right.color) {
+          w.color = x.parent.color;
+          x.parent.color = true;
+          w.right.color = true;
+          rotateLeft(x.parent);
+          x = root;
+        }
+      } else {
+        Node w = x.parent.left;
+        if (!w.color) {
+          w.color = true;
+          x.parent.color = false;
+          rotateRight(x.parent);
+          w = x.parent.left;
+        }
+        if (w.right.color && w.left.color) {
+          w.color = false;
+          x = x.parent;
+          continue;
+        } else if (w.left.color ) {
+          w.right.color = true;
+          w.color = false;
+          rotateLeft(w);
+          w = x.parent.left;
+        }
+        if (!w.left.color) {
+          w.color = x.parent.color;
+          x.parent.color = true;
+          w.left.color = true;
+          rotateRight(x.parent);
+          x = root;
+        }
+      }
+    }
+    x.color = true;
+  }
+
+
 
   /**
    * EverparentSibling new node color should be in red. So consider
@@ -199,6 +349,8 @@ public class RedBlackTree {
     redBlackTree.add(5);
     redBlackTree.add(3);
     redBlackTree.add(21);
+
+    System.out.println("Deleted Node is : "+redBlackTree.delete(8));
 
   }
 }
