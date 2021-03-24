@@ -3,9 +3,7 @@ package Algorithms.FairDraft.Trees;
 import junit.framework.TestCase;
 import static  org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.function.Executable;
 
 class RedBlackTreeTest extends TestCase {
   private RedBlackTree redBlackTree;
