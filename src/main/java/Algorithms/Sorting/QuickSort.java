@@ -94,4 +94,53 @@ private int partitionRecursion(int start, int end, int[] inputArray)
   return start;
 }
 
+public  int[] quickSort2(int[] inputArray)
+{
+
+  quickSortRecursion2(0,inputArray.length-1, inputArray);
+
+  return inputArray;
+}
+
+private void quickSortRecursion2(int start, int end , int[] inputArray)
+{
+    if (start < end) {
+      int pivot = partition2(start, end, inputArray);
+
+      quickSortRecursion2(start, pivot - 1, inputArray);
+      quickSortRecursion2(pivot,end, inputArray);
+  }
+}
+
+
+
+private int partition2(int start, int end , int[] inputArray)
+{
+  int pivotIndex=inputArray[start];
+
+  while(start<=end)
+  {
+
+    while (inputArray[start]<pivotIndex)
+    {
+     start++;
+    }
+
+    while (inputArray[end]>pivotIndex)
+    {
+      end--;
+    }
+
+    if(start<=end)
+    {
+      swapElements(inputArray,start,end);
+      start++;
+      end--;
+    }
+
+  }
+
+
+  return start;
+}
 }

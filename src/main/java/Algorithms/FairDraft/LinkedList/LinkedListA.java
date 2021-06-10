@@ -439,8 +439,8 @@ public class LinkedListA<E> implements List<E>, Deque<E>, Cloneable {
 
 
     LinkedListA<String> linkedListA=new LinkedListA();
-    linkedListA.add("1");
-    linkedListA.add("2");
+    linkedListA.addFirst("1");
+    linkedListA.addFirst("2");
     linkedListA.add("3");
     //linkedListA.set(0, "4");
    // linkedListA.add(2, "4");

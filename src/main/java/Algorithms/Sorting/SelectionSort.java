@@ -23,4 +23,34 @@ public class SelectionSort {
 
     return subArray;
   }
+
+  private void swapElements(int[] inputArray, int low, int high) {
+    if (low < 0 || high >= inputArray.length) throw new IllegalArgumentException();
+    int tempHigh = inputArray[high];
+    inputArray[high] = inputArray[low];
+    inputArray[low] = tempHigh;
+  }
+
+  private int[] selectionSort1(int[] inputArray)
+  {
+
+    int index=0;
+
+    while(index<inputArray.length)
+    {
+
+      int tempIndex=index+1;
+
+      while (tempIndex<inputArray.length)
+      {
+        if(inputArray[tempIndex]<inputArray[index])
+          swapElements(inputArray,index,tempIndex);
+        tempIndex++;
+
+      }
+      index++;
+    }
+
+    return inputArray;
+  }
 }

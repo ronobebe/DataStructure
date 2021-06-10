@@ -3,7 +3,7 @@ package Algorithms.FairDraft.Trees;
 public class AVLTree {
 
   private int size;
-   Node root;
+  public Node root;
 
   public int getSize() {
     return this.size;
