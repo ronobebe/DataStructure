@@ -32,6 +32,9 @@ public  class VectorImmutable<E> extends AbstractList<E> {
     private static final Object[] EMPTY_ELEMENTDATA = new Object[0];
     private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = new Object[0];
 
+    /**
+     * @param val1 
+     */
     public VectorImmutable(int val1) {
         // constructor for fixed size array
         if(val1>0){

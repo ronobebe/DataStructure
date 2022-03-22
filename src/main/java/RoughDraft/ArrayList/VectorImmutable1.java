@@ -30,13 +30,17 @@ public class VectorImmutable1<E> extends AbstractList<E> implements List<E>, Ran
     }
 
 
-
-
+    /**
+     * @return
+     */
     @Override
     public boolean isEmpty() {
         return this.size==0;
     }
 
+    /**
+     * @return Test
+     */
     @Override
     public int size() {
         return this.size;
